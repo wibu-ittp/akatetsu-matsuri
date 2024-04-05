@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Base Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Akatetsu Matsuri</title>
+    <meta name="title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta name="description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wibu-ittp.github.io/akatetsu-matsuri">
+    <meta property="og:title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta property="og:description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta property="og:image" itemprop="image" content="https://wibu-ittp.github.io/akatetsu-matsuri/images/wa-meta-banner.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wibu-ittp.github.io/akatetsu-matsuri">
+    <meta property="twitter:title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta property="twitter:description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta property="twitter:image" content="https://wibu-ittp.github.io/akatetsu-matsuri/images/meta-banner.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Webmanifest -->
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="./assets/css/tailwind.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body>
+    <section id="home" class="relative text-[#EC1337]">
+      <video class="absolute w-screen h-svh object-cover" src="./assets/videos/anime-expo.webm" autoPlay loop muted></video>
+      <div class="absolute w-screen h-svh flex flex-col justify-between bg-white/75 p-8 md:px-16">
+        <div class="flex gap-6 self-center">
+          <img class="h-8 md:h-12" src="./assets/images/ittp.png" alt="IT Telkom Purwokerto">
+          <img class="h-8 md:h-12" src="./assets/images/tel-u-pwt.png" alt="Menuju Tel-U Purwokerto">
+          <img class="h-8 md:h-12" src="./assets/images/wibu-ittp.png" alt="Wibu ITTP">
+        </div>
+        <div class="flex flex-col items-center">
+          <img class="w-3/4 max-w-[640px] mb-8 md:mb-16" src="./assets/images/logo.png" alt="Akatetsu Matsuri Logo">
+          <p class="text-xl md:text-2xl font-bold tracking-[.5rem] md:tracking-[1rem]">coming soo<span class="tracking-normal">n</span></p>
+        </div>
+        <div class="flex justify-end gap-4">
+          <a class="text-xl md:text-2xl font-bold moving-animation" href="./recruitment">wanna join? <i class="fa-solid fa-angles-right"></i></a>
+        </div>
+      </div>
+    </section>
+    
+    <div id="loading" class="absolute flex justify-center items-center bg-white h-svh w-screen">
+      <h1 class="text-4xl font-bold text-[#EC1337]">Loading...</h1>
+    </div>
+    
+    <script>
+      const loading = document.getElementById('loading');
+
+      // Loading
+      function onReady(callback) {
+        var intervalId = window.setInterval(function() {
+          if (document.getElementsByTagName('body')[0] !== undefined) {
+            window.clearInterval(intervalId);
+            callback.call(this);
+          }
+        }, 1000);
+      }
+
+      function setOpacity(element, opacity) {
+        element.style.transition = 'opacity 1s';
+        element.style.opacity = opacity;
+      }
+
+      function setVisible(selector, visible) {
+        document.querySelector(selector).style.display = visible ? 'block' : 'none';
+      }
+
+      onReady(function() {
+        setOpacity(loading, '0%');
+        setInterval(function() {
+          setVisible('#loading', false);
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
