@@ -26,11 +26,11 @@
     <meta property="twitter:image" content="https://wibu-ittp.github.io/akatetsu-matsuri/assets/images/meta-banner.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
     <!-- Webmanifest -->
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="manifest" href="../site.webmanifest">
 
     <!-- Tailwind -->
     <link rel="stylesheet" href="../assets/css/tailwind.css">
@@ -57,13 +57,13 @@
       <img id="position-image" class="rounded-2xl w-full h-[24rem] object-cover my-8" src="#" alt="Position Title">
       <h2 id="position-title" class="text-4xl font-bold text-[#EC1337] mb-4">Position Title</h2>
       <p id="position-description" class="text-xl">Position Description</p>
-      <div id="position-tasks" class="my-8">
+      <div class="my-8">
         <h3 class="text-2xl font-bold text-[#EC1337]">Apa yang akan kamu lakukan:</h3>
-        <ul class="list-disc pl-8 mt-4">
+        <ul id="position-tasks" class="list-disc pl-8 mt-4">
           <!-- Tasks will be inserted here -->
         </ul>
       </div>
-      <p class="text-center my-16"><a href="https://docs.google.com/forms/d/e/1FAIpQLScgLmmq7P1_CJXPsPd0m1ZYdjHI6SdJpzIuSXibOb9F-L8tyg/viewform?usp=sf_link" class="bg-[#EC1337] text-white text-center text-xl font-black rounded-lg py-4 px-8"><i class="fas fa-pen-to-square"></i> DAFTAR</a></p>
+      <p class="text-center my-16"><a class="bg-[#EC1337] hover:bg-white text-white hover:text-[#EC1337] hover:border-4 hover:border-[#EC1337] text-center text-xl font-black rounded-lg py-4 px-8" href="https://docs.google.com/forms/d/e/1FAIpQLScgLmmq7P1_CJXPsPd0m1ZYdjHI6SdJpzIuSXibOb9F-L8tyg/viewform?usp=sf_link"><i class="fas fa-pen-to-square"></i> DAFTAR</a></p>
     </section>
 
     <script type="module">
@@ -75,19 +75,19 @@
         document.getElementById("position-description").textContent = position.description;
 
         const positionTasks = document.getElementById("position-tasks");
-        positionTasks.innerHTML = ""; // Clear existing tasks
+        // positionTasks.innerHTML = ""; // Clear existing tasks
 
-        const tasksList = document.createElement("ul");
-        tasksList.classList.add("list-disc", "pl-8", "mt-4");
+        // const tasksList = document.createElement("ul");
+        // tasksList.classList.add("list-disc", "pl-8", "mt-4");
 
         position.tasks.forEach(task => {
           const taskItem = document.createElement("li");
           taskItem.textContent = task;
           taskItem.classList.add("text-lg");
-          tasksList.appendChild(taskItem);
+          positionTasks.appendChild(taskItem);
         });
 
-        positionTasks.appendChild(tasksList);
+        // positionTasks.appendChild(tasksList);
       }
 
       // Get id from URL
@@ -105,7 +105,7 @@
     </script>
     <script>
       function toggleMenu() {
-        var menu = document.getElementById("menu");
+        let menu = document.getElementById("menu");
         if (menu.classList.contains("hidden")) {
           menu.classList.remove("hidden");
         } else {

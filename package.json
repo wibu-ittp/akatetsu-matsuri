@@ -4,7 +4,7 @@
   "description": "Festival Jepang IT Telkom Purwokerto",
   "main": "tailwind.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tw-start": "tailwindcss -i assets/css/rawtailwind.css -o assets/css/tailwind.css --watch"
   },
   "author": "",
   "license": "ISC",
