@@ -1,7 +1,9 @@
+/* Box Sizing */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+/* Moving Animation */
 @keyframes moving {
   0% {
     margin-right: 1rem;

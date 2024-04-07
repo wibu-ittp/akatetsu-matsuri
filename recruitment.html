@@ -26,29 +26,29 @@
     <meta property="twitter:image" content="https://wibu-ittp.github.io/akatetsu-matsuri/assets/images/meta-banner.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" href="../favicon.ico">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
     <!-- Webmanifest -->
-    <link rel="manifest" href="../site.webmanifest">
+    <link rel="manifest" href="./site.webmanifest">
 
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../assets/css/tailwind.css">
+    <link rel="stylesheet" href="./assets/css/tailwind.css">
     
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
     <header class="bg-white text-[#EC1337] shadow-lg sticky top-0">
       <nav class="container relative flex justify-between items-center py-4 px-8 md:px-0 m-auto">
-        <a href="../"><img class="h-[3rem]" src="../assets/images/logo.png" alt="Akatetsu Matsuri Logo"></a>
+        <a href="./"><img class="h-[3rem]" src="./assets/images/logo.png" alt="Akatetsu Matsuri Logo"></a>
         <button class="md:hidden text-2xl" onclick="toggleMenu()"><span class="fas fa-bars"></span></button>
         <ul id="menu" class="absolute md:static top-20 left-0 w-full md:w-auto bg-white shadow-lg md:shadow-none md:flex gap-4 font-medium text-xl text-center hidden">
-          <li class="my-4"><a class="hover:font-black" href="../">Home</a></li>
-          <li class="my-4"><a class="hover:font-black" href="../recruitment">Recruitment</a></li>
+          <li class="my-4"><a class="hover:font-black" href="./">Home</a></li>
+          <li class="my-4"><a class="hover:font-black" href="./recruitment.html">Recruitment</a></li>
         </ul>
       </nav>
     </header>
@@ -64,7 +64,7 @@
     </section>
 
     <script type="module">
-      import positions from '../assets/js/positions.js';
+      import positions from './assets/js/positions.js';
       
       const loading = document.getElementById('loading');
 
@@ -73,7 +73,7 @@
         const positionCardsContainer = document.getElementById("position-cards");
         positions.forEach((position) => {
           const card = document.createElement("a");
-          card.href = `../position/index.html?id=${position.id}`;
+          card.href = `./position.html?id=${position.id}`;
           card.className = "flex flex-col justify-between max-w-[24rem] border-2 rounded-2xl border-transparent hover:border-gray-200 hover:shadow-lg p-2";
           card.innerHTML = `
             <div>
