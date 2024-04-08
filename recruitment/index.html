@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Base Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Akatetsu Matsuri</title>
+    <meta name="title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta name="description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wibu-ittp.github.io/akatetsu-matsuri">
+    <meta property="og:title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta property="og:description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta property="og:image" itemprop="image" content="https://wibu-ittp.github.io/akatetsu-matsuri/assets/images/wa-meta-banner.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wibu-ittp.github.io/akatetsu-matsuri">
+    <meta property="twitter:title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta property="twitter:description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta property="twitter:image" content="https://wibu-ittp.github.io/akatetsu-matsuri/assets/images/meta-banner.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <!-- Webmanifest -->
+    <link rel="manifest" href="../site.webmanifest">
+
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../assets/css/tailwind.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+  </head>
+  <body>
+    <header class="bg-white text-[#EC1337] shadow-lg sticky top-0">
+      <nav class="container relative flex justify-between items-center py-4 px-8 md:px-0 m-auto">
+        <a href="../"><img class="h-[3rem]" src="../assets/images/logo.png" alt="Akatetsu Matsuri Logo"></a>
+        <button class="md:hidden text-2xl" onclick="toggleMenu()"><span class="fas fa-bars"></span></button>
+        <ul id="menu" class="absolute md:static top-20 left-0 w-full md:w-auto bg-white shadow-lg md:shadow-none md:flex gap-4 font-medium text-xl text-center hidden">
+          <li class="my-4"><a class="hover:font-black" href="../">Home</a></li>
+          <li class="my-4"><a class="hover:font-black" href="../recruitment.html">Recruitment</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="recruitment" class="container py-32 px-8 md:px-0 md:mx-auto">
+      <h2 class="text-4xl font-bold text-[#EC1337]">Recruitment</h2>
+      <p class="text-xl"><s>Kami mencari pahlawan untuk mengalahkan raja iblis!</s></p>
+      <p class="text-xl">Kami membuka kepada siapapun yang ingin mendukung<br><strong>terwujudnya Festival Jepang perdana di IT Telkom Purwokerto!</strong></p>
+      <!-- Position cards -->
+      <div id="position-cards" class="flex flex-row flex-wrap justify-between gap-12 mt-16">
+        <!-- Generated position cards will be inserted here -->
+      </div>
+      <!-- End of position cards -->
+    </section>
+
+    <script type="module">
+      import positions from '../assets/js/positions.js';
+      
+      const loading = document.getElementById('loading');
+
+      // Function to generate position cards
+      function generatePositionCards() {
+        const positionCardsContainer = document.getElementById("position-cards");
+        positions.forEach((position) => {
+          const card = document.createElement("a");
+          card.href = `../position.html?id=${position.id}`;
+          card.className = "flex flex-col justify-between max-w-[24rem] border-2 rounded-2xl border-transparent hover:border-gray-200 hover:shadow-lg p-2";
+          card.innerHTML = `
+            <div>
+              <img class="rounded-2xl w-full h-[9rem] object-cover mb-4" src="${position.image}" alt="${position.title}">
+              <h3 class="text-2xl font-bold text-[#EC1337]">${position.title}</h3>
+              <p class="text-lg">${position.shortDescription}</p>
+            </div>
+            <p class="text-end mt-4 text-[#EC1337] text-lg font-bold hover:underline">Lihat detail</p>
+          `;
+          positionCardsContainer.appendChild(card);
+        });
+      }
+
+      // Generate position cards on page load
+      window.onload = function() {
+        generatePositionCards();
+      };
+    </script>
+    <script>
+      function toggleMenu() {
+        let menu = document.getElementById("menu");
+        if (menu.classList.contains("hidden")) {
+          menu.classList.remove("hidden");
+        } else {
+          menu.classList.add("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
