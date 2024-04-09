@@ -924,10 +924,6 @@ video {
   max-width: 640px;
 }
 
-.max-w-\[720px\]{
-  max-width: 720px;
-}
-
 .flex-shrink{
   flex-shrink: 1;
 }
@@ -1452,6 +1448,10 @@ video {
 
 .gap-12{
   gap: 3rem;
+}
+
+.gap-16{
+  gap: 4rem;
 }
 
 .gap-4{
@@ -2055,11 +2055,6 @@ video {
   padding: 2rem;
 }
 
-.px-16{
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -2088,26 +2083,6 @@ video {
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.px-32{
-  padding-left: 8rem;
-  padding-right: 8rem;
-}
-
-.px-64{
-  padding-left: 16rem;
-  padding-right: 16rem;
-}
-
-.px-72{
-  padding-left: 18rem;
-  padding-right: 18rem;
-}
-
-.px-80{
-  padding-left: 20rem;
-  padding-right: 20rem;
 }
 
 .pl-8{
@@ -2801,6 +2776,10 @@ video {
     height: 3rem;
   }
 
+  .md\:w-1\/2{
+    width: 50%;
+  }
+
   .md\:w-auto{
     width: auto;
   }
@@ -2809,16 +2788,16 @@ video {
     max-width: 56rem;
   }
 
-  .md\:max-w-\[640px\]{
-    max-width: 640px;
+  .md\:max-w-\[720px\]{
+    max-width: 720px;
   }
 
   .md\:max-w-\[560px\]{
     max-width: 560px;
   }
 
-  .md\:max-w-\[480px\]{
-    max-width: 480px;
+  .md\:flex-row{
+    flex-direction: row;
   }
 
   .md\:px-0{
@@ -2834,6 +2813,11 @@ video {
   .md\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .md\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .md\:tracking-\[1rem\]{
