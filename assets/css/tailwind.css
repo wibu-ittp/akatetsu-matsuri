@@ -685,14 +685,6 @@ video {
   isolation: auto;
 }
 
-.col-span-1{
-  grid-column: span 1 / span 1;
-}
-
-.col-span-2{
-  grid-column: span 2 / span 2;
-}
-
 .float-start{
   float: inline-start;
 }
@@ -796,10 +788,6 @@ video {
 
 .mt-4{
   margin-top: 1rem;
-}
-
-.mb-12{
-  margin-bottom: 3rem;
 }
 
 .box-border{
@@ -959,10 +947,6 @@ video {
 
 .w-screen{
   width: 100vw;
-}
-
-.w-32{
-  width: 8rem;
 }
 
 .max-w-\[24rem\]{
@@ -1311,18 +1295,6 @@ video {
   grid-auto-flow: column dense;
 }
 
-.grid-cols-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-cols-3{
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-rows-1{
-  grid-template-rows: repeat(1, minmax(0, 1fr));
-}
-
 .flex-row{
   flex-direction: row;
 }
@@ -1515,6 +1487,10 @@ video {
   gap: 4rem;
 }
 
+.gap-2{
+  gap: 0.5rem;
+}
+
 .gap-4{
   gap: 1rem;
 }
@@ -1525,10 +1501,6 @@ video {
 
 .gap-8{
   gap: 2rem;
-}
-
-.gap-2{
-  gap: 0.5rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -2847,24 +2819,14 @@ video {
     position: static;
   }
 
-  .md\:mx-32{
-    margin-left: 8rem;
-    margin-right: 8rem;
+  .md\:mx-24{
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 
   .md\:mx-auto{
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .md\:mx-28{
-    margin-left: 7rem;
-    margin-right: 7rem;
-  }
-
-  .md\:mx-24{
-    margin-left: 6rem;
-    margin-right: 6rem;
   }
 
   .md\:mb-12{
@@ -2875,12 +2837,12 @@ video {
     margin-bottom: 4rem;
   }
 
-  .md\:mb-4{
-    margin-bottom: 1rem;
-  }
-
   .md\:mb-2{
     margin-bottom: 0.5rem;
+  }
+
+  .md\:mb-4{
+    margin-bottom: 1rem;
   }
 
   .md\:flex{
@@ -2919,10 +2881,6 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-3{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .md\:flex-row{
     flex-direction: row;
   }
@@ -2931,12 +2889,12 @@ video {
     justify-content: space-between;
   }
 
-  .md\:gap-4{
-    gap: 1rem;
-  }
-
   .md\:gap-16{
     gap: 4rem;
+  }
+
+  .md\:gap-4{
+    gap: 1rem;
   }
 
   .md\:px-0{

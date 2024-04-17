@@ -73,13 +73,14 @@
       const applicants = [];
 
 
-      fetch("https://sheetdb.io/api/v1/d4d9clo5j8fqy", {
+      fetch("https://sheetdb.io/api/v1/y1ts9dgguvlcn", {
         method: "GET",
-        headers: {"Authorization": "Bearer hdmtu0j45ygmhnw6hb6qy3dlw9aw0a6aj307qpdg"}
+        headers: {"Authorization": "Bearer 4v84ttl2bd8kbodoplf6lclo6ir7euz71o5zkbp8"}
       })
         .then((response) => response.json())
         .then((responseData) => {
           data = responseData;
+          console.log(data);
           calculateData();
       });
 
@@ -99,6 +100,7 @@
               divisi: [],
               koordinator: [],
               catatan: [],
+              penilai: [],
               length: 1,
             };
             applicants.push(currentApplicant);
@@ -137,6 +139,12 @@
           if (applicant["Catatan Tambahan"]) {
             currentApplicant.catatan.push(applicant["Catatan Tambahan"]);
           }
+
+          // Update penilai
+          currentApplicant.penilai.push(applicant["Email Address"]);
+
+          // Sort penilai by name
+          currentApplicant.penilai.sort();
         });
 
         // Add applicants length
@@ -192,6 +200,8 @@
         applicants.sort((a, b) => parseInt(a.nama) - parseInt(b.nama));
 
         displayData();
+
+        console.log(applicants);
       }
 
       function displayData() {
@@ -315,10 +325,20 @@
               </ul>
             </div>
           </div>
-          <div>
+          <div class="mb-16">
             <div>
               <h3 class="text-[#EC1337] font-bold text-xl mb-2">Catatan</h3>
               <p>${applicants[currentIndex].catatan.join('<br><hr class="my-2">')}</p>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Penilai</h3>
+              <ul class="flex flex-wrap justify-between">
+                ${applicants[currentIndex].penilai.map((penilai) => `
+                  <li>${penilai}</li>
+                `).join('')}
+              </ul>
             </div>
           </div>
         `;
