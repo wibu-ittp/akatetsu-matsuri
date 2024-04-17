@@ -205,15 +205,15 @@
                 <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].pengenalanDiri}%"></div>
               </div>
               <div class="flex justify-between w-full mb-1">
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pengenalanDiri > 0 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pengenalanDiri >= 25 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pengenalanDiri >= 50 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pengenalanDiri >= 75 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pengenalanDiri >= 100 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
               </div>
               <div class="flex flex-row justify-between text-sm">
-                <p>Sangat Kurang Tahu</p>
-                <p>Sangat Tahu</p>
+                <p>Sangat Kurang Bagus</p>
+                <p>Sangat Bagus</p>
               </div>
             </div>
             <div>
@@ -222,15 +222,15 @@
                 <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].tahuEvent}%"></div>
               </div>
               <div class="flex justify-between w-full mb-1">
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].tahuEvent > 0 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].tahuEvent >= 25 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].tahuEvent >= 50 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].tahuEvent >= 75 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].tahuEvent >= 100 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
               </div>
               <div class="flex flex-row justify-between text-sm">
-                <p>Sangat Kurang Paham</p>
-                <p>Sangat Paham</p>
+                <p>Sangat Kurang Tahu</p>
+                <p>Sangat Tahu</p>
               </div>
             </div>
             <div>
@@ -239,11 +239,11 @@
                 <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].pahamDivisi1}%"></div>
               </div>
               <div class="flex justify-between w-full mb-1">
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi1 > 0 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi1 >= 25 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi1 >= 50 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi1 >= 75 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi1 >= 100 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
               </div>
               <div class="flex flex-row justify-between text-sm">
                 <p>Sangat Kurang Paham</p>
@@ -256,11 +256,11 @@
                 <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].pahamDivisi2}%"></div>
               </div>
               <div class="flex justify-between w-full mb-1">
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi2 > 0 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi2 >= 25 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi2 >= 50 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi2 >= 75 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].pahamDivisi2 >= 100 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
               </div>
               <div class="flex flex-row justify-between text-sm">
                 <p>Sangat Kurang Paham</p>
@@ -268,18 +268,18 @@
               </div>
             </div>
           </div>
-          <div class="grid gap-8 mb-16 md:mx-32">
+          <div class="grid gap-8 mb-16 md:mx-24">
             <div>
               <h3 class="text-[#EC1337] font-bold text-xl mb-2">Komitmen</h3>
               <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
                 <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].komitmen}%"></div>
               </div>
               <div class="flex justify-between w-full mb-1">
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].komitmen > 0 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].komitmen >= 25 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].komitmen >= 50 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].komitmen >= 75 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].komitmen >= 100 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
               </div>
               <div class="flex flex-row justify-between text-sm">
                 <p>0%</p>
@@ -292,16 +292,27 @@
                 <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].koordinator}%"></div>
               </div>
               <div class="flex justify-between w-full mb-1">
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
-                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].koordinator > 0 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].koordinator >= 25 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].koordinator >= 50 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].koordinator >= 75 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
+                <div class="w-2.5 h-2.5 ${applicants[currentIndex].koordinator >= 100 ? "bg-[#EC1337]" : "bg-gray-200"} rounded-full"></div>
               </div>
               <div class="flex flex-row justify-between text-sm">
                 <p>Tidak</p>
                 <p>Ya</p>
               </div>
+            </div>
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Kecocokan Divisi</h3>
+              <ul>
+                ${applicants[currentIndex].divisi.map((divisi) => `
+                  <li class="grid md:grid-cols-2 gap-2 md:gap-16 mb-4 md:mb-2">
+                    <p>${divisi.nama}</p>
+                    <div class="bg-[#EC1337] text-white text-sm text-center py-2 rounded" style="width: ${divisi.persen}%">${divisi.persen}%</div>
+                  </li>
+                `).join('')}
+              </ul>
             </div>
           </div>
           <div>
