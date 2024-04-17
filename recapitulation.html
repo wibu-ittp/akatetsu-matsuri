@@ -80,7 +80,6 @@
         .then((response) => response.json())
         .then((responseData) => {
           data = responseData;
-          console.log(data);
           calculateData();
       });
 
@@ -200,8 +199,6 @@
         applicants.sort((a, b) => parseInt(a.nama) - parseInt(b.nama));
 
         displayData();
-
-        console.log(applicants);
       }
 
       function displayData() {
