@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Base Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Akatetsu Matsuri</title>
+    <meta name="title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta name="description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wibu-ittp.github.io/akatetsu-matsuri">
+    <meta property="og:title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta property="og:description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta property="og:image" itemprop="image" content="https://wibu-ittp.github.io/akatetsu-matsuri/assets/images/wa-meta-banner.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wibu-ittp.github.io/akatetsu-matsuri">
+    <meta property="twitter:title" content="赤鉄祭り：最強の二葉 AKATETSU MATSURI: Sakyou no Futaba">
+    <meta property="twitter:description" content="Akatetsu Matsuri adalah festival Jepang yang diadakan oleh Komunitas Wibu ITTP di IT Telkom Purwokerto.">
+    <meta property="twitter:image" content="https://wibu-ittp.github.io/akatetsu-matsuri/assets/images/meta-banner.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
+    <!-- Webmanifest -->
+    <link rel="manifest" href="./site.webmanifest">
+
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="./assets/css/tailwind.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+  <body>
+    <header class="bg-white text-[#EC1337] shadow-lg sticky top-0">
+      <nav class="container relative flex justify-between items-center py-4 px-8 md:px-0 mx-auto">
+        <a href="./"><img class="h-[3rem]" src="./assets/images/logo.png" alt="Akatetsu Matsuri Logo"></a>
+        <button class="md:hidden text-2xl" onclick="toggleMenu()"><span class="fas fa-bars"></span></button>
+        <ul id="menu" class="absolute md:static top-20 left-0 w-full md:w-auto bg-white shadow-lg md:shadow-none md:flex gap-4 font-medium text-xl text-center hidden">
+          <li class="my-4"><a class="hover:font-black" href="./">Home</a></li>
+          <li class="my-4"><a class="hover:font-black" href="./recruitment.html">Recruitment</a></li>
+          <li class="my-4"><a class="hover:font-black" href="./about.html">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="applicant" class="container py-32 px-8 md:px-0 mx-auto">
+      <div class="flex justify-between">
+        <button class="bg-[#EC1337] hover:bg-[#8E0B21] text-white font-bold py-2 px-4 rounded" onclick="prevData()">Prev</button>
+        <button class="bg-[#EC1337] hover:bg-[#8E0B21] text-white font-bold py-2 px-4 rounded" onclick="nextData()">Next</button>
+      </div>
+      <div class="md:text-xl md:max-w-[720px] my-16 mx-auto">
+        <section id="penilaianKumulatif"></section>
+      </div>
+      <div class="flex justify-between">
+        <button class="bg-[#EC1337] hover:bg-[#8E0B21] text-white font-bold py-2 px-4 rounded" onclick="prevData()">Prev</button>
+        <button class="bg-[#EC1337] hover:bg-[#8E0B21] text-white font-bold py-2 px-4 rounded" onclick="nextData()">Next</button>
+      </div>
+    </section>
+
+    <script>
+      let data = [];
+      let currentIndex = 0;
+      const applicants = [];
+
+
+      fetch("https://sheetdb.io/api/v1/d4d9clo5j8fqy", {
+        method: "GET",
+        headers: {"Authorization": "Bearer hdmtu0j45ygmhnw6hb6qy3dlw9aw0a6aj307qpdg"}
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+          data = responseData;
+          calculateData();
+      });
+
+      function calculateData() {
+        // Calculate applicant score
+        data.forEach((applicant, index) => {
+          // Find existing applicant or create new one
+          let currentApplicant = applicants.find((item) => item.nama === applicant["Nama"]);
+          if (!currentApplicant) {
+            currentApplicant = {
+              nama: applicant["Nama"],
+              pengenalanDiri: [],
+              tahuEvent: [],
+              pahamDivisi1: [],
+              pahamDivisi2: [],
+              komitmen: [],
+              divisi: [],
+              koordinator: [],
+              catatan: [],
+              length: 1,
+            };
+            applicants.push(currentApplicant);
+          }
+
+          // Update applicant score
+          currentApplicant.pengenalanDiri.push(parseInt(applicant["Seberapa paham dia mengenal dirinya?"]));
+          currentApplicant.tahuEvent.push(parseInt(applicant["Seberapa tahu dia soal event wibu/jejepangan?"]));
+          currentApplicant.pahamDivisi1.push(parseInt(applicant["Seberapa paham dia soal divisi yang dia minati pertama?"]));
+          if (applicant["Seberapa paham dia soal divisi yang dia minati kedua? (abaikan jika tidak ada)"]) {
+            currentApplicant.pahamDivisi2.push(parseInt(applicant["Seberapa paham dia soal divisi yang dia minati kedua? (abaikan jika tidak ada)"]));
+          }
+          currentApplicant.komitmen.push(parseInt(applicant["Seberapa komitmen dia?"]));
+
+          // Update koordinator score
+          if (applicant["Apakah dia cocok untuk jadi koordinator divisi?"] === "Ya") {
+            currentApplicant.koordinator.push(1);
+          } else if (applicant["Apakah dia cocok untuk jadi koordinator divisi?"] === "Mungkin Ya") {
+            currentApplicant.koordinator.push(0.5);
+          } else if (applicant["Apakah dia cocok untuk jadi koordinator divisi?"] === "Mungkin Tidak") {
+            currentApplicant.koordinator.push(-0.5);
+          } else if (applicant["Apakah dia cocok untuk jadi koordinator divisi?"] === "Tidak") {
+            currentApplicant.koordinator.push(-1);
+          }
+          
+          // Update division and notes
+          const divisiIndex = currentApplicant.divisi.findIndex((divisi) => divisi.nama === applicant["Divisi mana yang cocok untuk dia?"]);
+          if (divisiIndex === -1) {
+            currentApplicant.divisi.push({
+              nama: applicant["Divisi mana yang cocok untuk dia?"],
+              persen: 1,
+            });
+          } else {
+            currentApplicant.divisi[divisiIndex].persen++;
+          }
+          if (applicant["Catatan Tambahan"]) {
+            currentApplicant.catatan.push(applicant["Catatan Tambahan"]);
+          }
+        });
+
+        // Add applicants length
+        applicants.forEach((applicant) => {
+          applicant.length = applicant.pengenalanDiri.length;
+        });
+
+        // Count average score
+        applicants.forEach((applicant, index) => {
+          applicant.pengenalanDiri = applicant.pengenalanDiri.reduce((a, b) => a + b) / applicant.pengenalanDiri.length;
+          applicant.tahuEvent = applicant.tahuEvent.reduce((a, b) => a + b) / applicant.tahuEvent.length;
+          applicant.pahamDivisi1 = applicant.pahamDivisi1.reduce((a, b) => a + b) / applicant.pahamDivisi1.length;
+          if (applicant.pahamDivisi2.length > 0) {
+            applicant.pahamDivisi2 = applicant.pahamDivisi2.reduce((a, b) => a + b) / applicant.pahamDivisi2.length;
+          }
+          applicant.komitmen = applicant.komitmen.reduce((a, b) => a + b) / applicant.komitmen.length;
+          applicant.koordinator = applicant.koordinator.reduce((a, b) => a + b) / applicant.koordinator.length;
+          applicant.divisi.forEach((divisi) => {
+            divisi.persen /= applicant.length;
+          });
+          applicant.divisi.sort((a, b) => b.persen - a.persen);
+        });
+
+        // Convert score to percentage
+        applicants.forEach((applicant) => {
+          applicant.pengenalanDiri = (applicant.pengenalanDiri / 5) * 100;
+          applicant.tahuEvent = (applicant.tahuEvent / 5) * 100;
+          applicant.pahamDivisi1 = (applicant.pahamDivisi1 / 5) * 100;
+          if (applicant.pahamDivisi2) {
+            applicant.pahamDivisi2 = (applicant.pahamDivisi2 / 5) * 100;
+          }
+          applicant.komitmen = (applicant.komitmen / 5) * 100;
+          applicant.koordinator = ((applicant.koordinator + 1) / 2) * 100;
+          applicant.divisi.forEach((divisi) => {
+            divisi.persen *= 100;
+          });
+        });
+
+        // Round score to 2 decimal places
+        applicants.forEach((applicant) => {
+          applicant.pengenalanDiri = Math.round(applicant.pengenalanDiri * 100) / 100;
+          applicant.tahuEvent = Math.round(applicant.tahuEvent * 100) / 100;
+          applicant.pahamDivisi1 = Math.round(applicant.pahamDivisi1 * 100) / 100;
+          applicant.pahamDivisi2 = Math.round(applicant.pahamDivisi2 * 100) / 100;
+          applicant.komitmen = Math.round(applicant.komitmen * 100) / 100;
+          applicant.koordinator = Math.round(applicant.koordinator * 100) / 100;
+          applicant.divisi.forEach((divisi) => {
+            divisi.persen = Math.round(divisi.persen * 100) / 100;
+          });
+        });
+
+        // Sort applicants by name in numerical order
+        applicants.sort((a, b) => parseInt(a.nama) - parseInt(b.nama));
+
+        displayData();
+      }
+
+      function displayData() {
+        const penilaianKumulatif = document.getElementById("penilaianKumulatif");
+        penilaianKumulatif.innerHTML = `
+          <h2 class="text-[#EC1337] font-bold text-center text-2xl mb-4">${applicants[currentIndex].nama}</h2>
+          <div class="grid sm:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Pengenalan Diri</h3>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
+                <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].pengenalanDiri}%"></div>
+              </div>
+              <div class="flex justify-between w-full mb-1">
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+              </div>
+              <div class="flex flex-row justify-between text-sm">
+                <p>Sangat Kurang Tahu</p>
+                <p>Sangat Tahu</p>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Pengetahuan Event</h3>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
+                <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].tahuEvent}%"></div>
+              </div>
+              <div class="flex justify-between w-full mb-1">
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+              </div>
+              <div class="flex flex-row justify-between text-sm">
+                <p>Sangat Kurang Paham</p>
+                <p>Sangat Paham</p>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Pemahaman Divisi Pertama</h3>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
+                <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].pahamDivisi1}%"></div>
+              </div>
+              <div class="flex justify-between w-full mb-1">
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+              </div>
+              <div class="flex flex-row justify-between text-sm">
+                <p>Sangat Kurang Paham</p>
+                <p>Sangat Paham</p>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Pemahaman Divisi Kedua</h3>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
+                <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].pahamDivisi2}%"></div>
+              </div>
+              <div class="flex justify-between w-full mb-1">
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+              </div>
+              <div class="flex flex-row justify-between text-sm">
+                <p>Sangat Kurang Paham</p>
+                <p>Sangat Paham</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid gap-8 mb-16 md:mx-32">
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Komitmen</h3>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
+                <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].komitmen}%"></div>
+              </div>
+              <div class="flex justify-between w-full mb-1">
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+              </div>
+              <div class="flex flex-row justify-between text-sm">
+                <p>0%</p>
+                <p>100%</p>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Koordinator</h3>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mb-1">
+                <div class="bg-[#EC1337] h-2.5 rounded-full" style="width: ${applicants[currentIndex].koordinator}%"></div>
+              </div>
+              <div class="flex justify-between w-full mb-1">
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+                <div class="w-2.5 h-2.5 bg-gray-200 rounded-full"></div>
+              </div>
+              <div class="flex flex-row justify-between text-sm">
+                <p>Tidak</p>
+                <p>Ya</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h3 class="text-[#EC1337] font-bold text-xl mb-2">Catatan</h3>
+              <p>${applicants[currentIndex].catatan.join('<br><hr class="my-2">')}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      function prevData() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          displayData();
+        }
+      }
+
+      function nextData() {
+        if (currentIndex < applicants.length - 1) {
+          currentIndex++;
+          displayData();
+        }
+      }
+    </script>
+    <script>
+      function toggleMenu() {
+        let menu = document.getElementById("menu");
+        if (menu.classList.contains("hidden")) {
+          menu.classList.remove("hidden");
+        } else {
+          menu.classList.add("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>

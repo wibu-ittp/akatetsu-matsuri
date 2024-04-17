@@ -96,7 +96,6 @@
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           divisi.forEach((divisi) => {
             const filteredData = data.filter(item => item["Nomor Induk Mahasiswa"] !== "2327373737");
             const firstChoiceCount = filteredData.filter(item => item["Pilihan Peminatan 1"] === divisi).length;
